@@ -1,4 +1,4 @@
-name: 애자일허브 backend DEV CD
+name: backend DEV CD
 
 env:
   DOCKER_HUB_REPOSITORY: hueyjeong/cicd_test_01
@@ -30,7 +30,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and Push
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v4
         with:
           context: ./
           # Dockerfile이 있는 위치
