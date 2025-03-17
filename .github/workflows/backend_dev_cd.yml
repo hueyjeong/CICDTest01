@@ -13,7 +13,7 @@ on:
 
 jobs:
   backend-docker-build-and-push:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - name: Checkout Repository
@@ -45,7 +45,7 @@ jobs:
   backend-docker-pull-and-run:
     needs: [ backend-docker-build-and-push ]
     if: ${{ needs.backend-docker-build-and-push.result == 'success' }}
-    runs-on: [self-hosted, cd-actions]
+    runs-on: self-hosted
 
     steps:
       - name: Checkout code
