@@ -60,6 +60,7 @@ jobs:
         run: |
           ssh -i pem_key -o StrictHostKeyChecking=no ${{ secrets.WAS_USERNAME }}@${{ secrets.HOST_DEV }} << EOF
           docker rm -f agilehub-dev-backend || true
+          echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin 
           docker pull ${{ env.DOCKER_HUB_REPOSITORY }}:${{ github.sha }}
           docker run -d -p 8080:8080 --name agilehub-dev-backend ${{ env.DOCKER_HUB_REPOSITORY }}:${{ github.sha }}
           EOF
