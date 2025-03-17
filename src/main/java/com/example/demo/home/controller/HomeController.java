@@ -10,5 +10,5 @@ public class HomeController {
         return "Hello World!";
     }
     @GetMapping("about")
-    public String about() { return "what"; }
+    public String about() { return "한구루"; }
 }
