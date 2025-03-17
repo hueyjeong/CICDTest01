@@ -63,4 +63,4 @@ jobs:
           docker pull ${{ env.DOCKER_HUB_REPOSITORY }}:${{ github.sha }}
           docker run -d -p 8080:8080 --name agilehub-dev-backend ${{ env.DOCKER_HUB_REPOSITORY }}:${{ github.sha }}
           EOF
-출처: https://babgeuleus.tistory.com/entry/CICD-파이프라인-구축-Github-Actions-self-hosted-runners#테스트가-통과해야-pr-merge가-가능하도록-설정 [EVO:티스토리]
+#출처: https://babgeuleus.tistory.com/entry/CICD-파이프라인-구축-Github-Actions-self-hosted-runners#테스트가-통과해야-pr-merge가-가능하도록-설정 [EVO:티스토리]
