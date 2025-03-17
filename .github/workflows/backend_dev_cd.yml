@@ -1,7 +1,7 @@
 name: 애자일허브 backend DEV CD
 
 env:
-  DOCKER_HUB_REPOSITORY: msdockerl/agilehub-dev
+  DOCKER_HUB_REPOSITORY: hueyjeong/cicd_test_01
 
 on:
   workflow_dispatch:
