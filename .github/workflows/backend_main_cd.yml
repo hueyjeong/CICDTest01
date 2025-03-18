@@ -1,4 +1,4 @@
-name: Back-End Dev CD
+name: Back-End Main CD
 
 env:
   DOCKER_HUB_REPOSITORY: hueyjeong/cicd_test_01
@@ -7,7 +7,8 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - develop
+      - master
+      - main
     paths:
       - "src/**"
 
@@ -59,9 +60,9 @@ jobs:
       - name: WAS인스턴스 접속 및 애플리케이션 실행
         run: |
           ssh -i pem_key -o StrictHostKeyChecking=no ${{ secrets.WAS_USERNAME }}@${{ secrets.HOST_DEV }} << EOF
-          docker rm -f velog-clone-dev-backend || true
+          docker rm -f velog-clone-main-backend || true
           echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin 
           docker pull ${{ env.DOCKER_HUB_REPOSITORY }}:${{ github.sha }}
-          docker run -d -p 8080:8080 --name velog-clone-dev-backend ${{ env.DOCKER_HUB_REPOSITORY }}:${{ github.sha }}
+          docker run -d -p 8080:80 --name velog-clone-main-backend ${{ env.DOCKER_HUB_REPOSITORY }}:${{ github.sha }}
           EOF
 #출처: https://babgeuleus.tistory.com/entry/CICD-파이프라인-구축-Github-Actions-self-hosted-runners#테스트가-통과해야-pr-merge가-가능하도록-설정 [EVO:티스토리]
