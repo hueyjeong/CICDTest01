@@ -1,4 +1,4 @@
-name: 애자일허브 백엔드 CI 테스트 자동화
+name: Back-End CI
 
 on:
   pull_request:
